@@ -1,0 +1,62 @@
+{
+    "rabbitmq":{
+        "server":{
+            "host": "localhost",
+            "port": 5672,
+            "heartbeat": 600,
+            "username": "user",
+            "password": "123456"
+        },
+        "exchange_id": "AI_VOICE_00",
+        "node_name": "tts",
+        "listening_node": ["linker_dev","chat","asr"]
+    },
+
+    "tts":{
+        "common":{
+            "audio":{
+                "samplerate": 16000,
+                "channels": 1,
+                "sampwidth": 2,
+                "codec": "mp3"
+            },
+            "direct_n": 2
+        },
+
+        "service": "volc",
+
+        "volc":{
+            "ws_url": "wss://openspeech.bytedance.com/api/v1/tts/ws_binary",
+            "silence_duration": 300,
+            "voice_type": "BV700_streaming",
+            "voice_types": [
+                {"index": 0, "id": "BV700_streaming", "language": "MUL", "name":"灿灿", "example_text": "你好，我是你的智能语音助手."},
+                {"index": 1, "id": "BV406_streaming", "language": "CN",  "name":"梓梓", "example_text": "你好啊，让我们一起聊聊天吧。"},
+                {"index": 2, "id": "BV426_streaming", "language": "CN",  "name":"懒小羊", "example_text": "嗯~~嗯~，我在家里睡就不会被打搅了!"},
+                {"index": 3, "id": "BV021_streaming", "language": "CN",  "name":"东北老铁", "example_text": "哎呀妈呀，都别说话了，消停点呗。"},
+                {"index": 4, "id": "BV213_streaming", "language": "CN",  "name":"广西表哥", "example_text": "米粉吃完没，走了喂，同你一起去砍甘蔗。"},
+                {"index": 5, "id": "BV423_streaming", "language": "CN",  "name":"重庆幺妹", "example_text": "老子数到三， 老子数到三， 老子数到三!"},
+                {"index": 6, "id": "BV424_streaming", "language": "CN",  "name":"广东女仔", "example_text": "喂，我发觉你这份人都系好低意，嗰把嘴同埋个屎窟一样咁臭。"},
+                {"index": 7, "id": "BV051_streaming", "language": "CN",  "name":"奶气萌娃", "example_text": "我给你的小熊饼干，你也给他们了吗"},
+                {"index": 8, "id": "BV138_streaming", "language": "EN",  "name":"情感女声Lawrence", "example_text": "Heard melodies are sweet, but those unheard are sweeter."},
+                {"index": 9, "id": "BV511_streaming", "language": "EN",  "name":"慵懒女声Ava", "example_text": "Heard melodies are sweet, but those unheard are sweeter."}
+            ]
+        },
+        "xfai":{
+            "ws_url": "wss://tts-api.xfyun.cn/v2/tts",
+            "silence_duration": 0,
+            "voice_type": "",
+            "voice_types": [
+                {"index": 0, "id": "", "language": "", "name":"", "example_text": ""}
+            ]
+        },
+        "openai":{
+            "base_url": "https://api.openai-hk.com/v1/",
+            "speed": 1.0,
+            "voice_type": "nova",
+            "model": "tts-1-hd",
+            "format": "mp3"
+        }
+    }
+}
+

@@ -1,0 +1,8 @@
+
+env_steup.bash
+
+*.pyc
+__pycache__/
+
+
+

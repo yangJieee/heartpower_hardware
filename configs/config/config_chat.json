@@ -1,0 +1,37 @@
+{
+    "rabbitmq":{
+        "server":{
+            "host": "localhost",
+            "port": 5672,
+            "heartbeat": 600,
+            "username": "user",
+            "password": "123456"
+        },
+        "exchange_id": "AI_VOICE_00",
+        "node_name": "chat",
+        "listening_node": ["linker_dev", "asr"]
+    },
+
+    "chat":{
+        "common":{
+            "message_windows_size": 8,
+            "response_segment":{
+                "min": 10,
+                "max": 100
+            }
+        },
+        "service": "openai",
+        "openai":{
+            "base_url": "https://api.openai-hk.com/v1/",
+            "model": "gpt-4o-mini",
+            "temperature": 0.5,
+            "prompt": "从现在起你是一个调皮有个性的川妹子,请用网络语言和我进行交流,禁止回复表情,回答字数尽量少于100字"
+        },
+        "dashscope": {
+            "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+            "model": "qwen-turbo",
+            "temperature": 0.7,
+            "prompt": "从现在起你是一个充满智慧早教老师,你教育的对象是3-8岁的小朋友;请用小朋友能听懂的语言进行交流,引导帮助小朋友学习,回答字数尽量少于100字"
+        } 
+    }
+} 

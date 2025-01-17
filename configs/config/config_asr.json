@@ -1,0 +1,32 @@
+{
+    "rabbitmq":{
+        "server":{
+            "host": "localhost",
+            "port": 5672,
+            "heartbeat": 600,
+            "username": "user",
+            "password": "123456"
+        },
+        "exchange_id": "AI_VOICE_00",
+        "node_name": "asr",
+        "listening_node": ["linker_dev"]
+    },
+
+    "asr":{
+        "service": "volc",
+        "volc":{
+            "ws_url": "wss://openspeech.bytedance.com/api/v2/asr"
+        },
+        "common":{
+            "audio":{
+                "samplerate": 16000,
+                "channels": 1,
+                "sampwidth": 2,
+                "codec": "raw"
+            }
+        },
+        "valid_text_min": 2,
+        "save_audio_opus": false,
+        "save_audio_wav": false 
+    }
+} 

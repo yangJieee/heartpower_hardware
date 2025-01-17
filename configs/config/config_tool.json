@@ -1,0 +1,14 @@
+{
+    "rabbitmq":{
+        "server":{
+            "host": "localhost",
+            "port": 5672,
+            "heartbeat": 600,
+            "username": "user",
+            "password": "123456"
+        },
+        "exchange_id": "AI_VOICE_00",
+        "node_name": "tool",
+        "listening_node": ["linker_dev"]
+    }
+} 

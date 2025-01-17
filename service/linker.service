@@ -1,0 +1,11 @@
+[Unit]
+Description=linker node
+After=network.target
+
+[Service]
+WorkingDirectory=
+ExecStart=/bin/bash /home/deakin/esp/ailinker/linker_start.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
