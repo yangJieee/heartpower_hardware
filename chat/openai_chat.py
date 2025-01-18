@@ -86,6 +86,7 @@ class OpenAIChat():
         messages = [] 
         messages.extend(self.prompt)
         messages.extend(self.chat_messages)
+        # print(f"chat message: {self.chat_messages}")
         return messages
 
 

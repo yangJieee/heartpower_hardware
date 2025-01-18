@@ -40,7 +40,11 @@ class ChatNode(MqBaseNode):
         # 键盘控制
         # self.keyboard = KBHit()
         self.node_exit = False
-
+        try:
+            with open(FILE_PATH, "x", encoding="utf-8") as f:
+                json.dump([], f, ensure_ascii=False, indent=4)
+        except FileExistsError:
+            pass # 如果文件已存在，则无需初始化
         self.chat = OpenAIChat(self.chat_config)
 
         ## 本轮聊天ID
@@ -83,13 +87,6 @@ class ChatNode(MqBaseNode):
             }    
         }
         return data_obj
-
-    def initialize_conversation_file():
-        try:
-            with open(FILE_PATH, "x", encoding="utf-8") as f:
-                json.dump([], f, ensure_ascii=False, indent=4)
-        except FileExistsError:
-            pass # 如果文件已存在，则无需初始化
 
     # 添加一条对话记录     
     def add_conversation(self, bot_text: str, chat_id: int):
@@ -144,8 +141,8 @@ class ChatNode(MqBaseNode):
                         logger.info("{:2} {}".format(answer_msg['seq'], answer_msg['text']))
                         self.auto_send(self.create_answer_msg(answer_msg, self.chat_id))
                         bot_list.append(answer_msg)  # 将 chunk 添加到列表
-                bot_text = ''.join(bot_list) # 将列表字符串拼接为一个整体
-                self.add_conversation(bot_text, self.chat_id) # 将bot回复保存到另一个json文件中
+                # bot_text = ''.join(bot_list) # 将列表字符串拼接为一个整体
+                self.add_conversation(bot_list[0]['text'], self.chat_id) # 将bot回复保存到另一个json文件中
                         
             else:
                 answer_msg = self.chat.get_response(text)
@@ -161,7 +158,7 @@ class ChatNode(MqBaseNode):
         """
         ## 启动rabitmq transport线程
         self.transport_start()
-        self.initialize_conversation_file()
+        # self.initialize_conversation_file()
         while not self.node_exit:
             sleep(0.001)
             # self.keyboard_control()

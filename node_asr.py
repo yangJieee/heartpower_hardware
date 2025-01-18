@@ -384,7 +384,7 @@ class ASRNode(MqBaseNode):
 
         ## 启动asr client
         self.asr.launch()
-        self.initialize_conversation_file()
+        # self.initialize_conversation_file()
         while not self.node_exit:
             # logger.info('asr main loop.')
             # await asyncio.sleep(0.01)

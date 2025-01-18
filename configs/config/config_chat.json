@@ -23,7 +23,7 @@
         "service": "openai",
         "openai":{
             "base_url": "https://api.openai-hk.com/v1/",
-            "model": "gpt-4o-mini",
+            "model": "gpt-3.5-turbo",
             "temperature": 0.5,
             "prompt": "从现在起你是一个调皮有个性的川妹子,请用网络语言和我进行交流,禁止回复表情,回答字数尽量少于100字"
         },
